@@ -1,3 +1,4 @@
 config/*.yml
+spec/fixtures/*
+results.yml	
 github_response.yml
-results.yml
