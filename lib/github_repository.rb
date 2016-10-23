@@ -9,26 +9,9 @@ module  Github
                 :watchers_count, :has_issues, :has_downloads, :forks_count,
                 :open_issues_count, :forks, :open_issues, :watchers
 
-    def initialize(github_api, repo)
+    def initialize(github_api, data: nil)
       @github_api = github_api
-      @id = repo['id']
-      @name = repo['name']
-      @full_name = repo['full_name']
-      @is_private = repo['is_private']
-      @is_fork = repo['is_fork']
-      @created_at = repo['created_at']
-      @updated_at = repo['updated_at']
-      @pushed_at = repo['pushed_at']
-      @size = repo['size']
-      @stargazers_count = repo['stargazers_count']
-      @watchers_count = repo['watchers_count']
-      @has_issues = repo['has_issues']
-      @has_downloads = repo['has_downloads']
-      @forks_count = repo['forks_count']
-      @open_issues_count = repo['open_issues_count']
-      @forks = repo['forks']
-      @open_issues = repo['open_issues']
-      @watchers = repo['watchers']
+      load_data(data)
     end
 
     def stats
@@ -40,6 +23,21 @@ module  Github
       ).each do |stat|
         @stats[stat] = @github_api.repo_stat(@full_name, stat)
       end
+    end
+
+    def load_data(repo_data)
+      @id = repo_data['id']
+      @name = repo_data['name']
+      @full_name = repo_data['full_name']
+      @is_private = repo_data['is_private']
+      @is_fork = repo_data['is_fork']
+      @created_at = repo_data['created_at']
+      @pushed_at = repo_data['pushed_at']
+      @size = repo_data['size']
+      @stargazers_count = repo_data['stargazers_count']
+      @watchers_count = repo_data['watchers_count']
+      @forks_count = repo_data['forks_count']
+      @open_issues_count = repo_data['open_issues_count']
     end
   end
 end

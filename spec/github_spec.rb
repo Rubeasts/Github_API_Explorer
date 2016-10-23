@@ -14,7 +14,7 @@ describe 'Github specifications' do
       ENV['GH_USERNAME'],
       ENV['GH_TOKEN']
     )
-    @developer = Github::Developer.new(@github_api, USERNAME)
+    @developer = Github::Developer.find(@github_api, username: USERNAME)
   end
 
   after do
