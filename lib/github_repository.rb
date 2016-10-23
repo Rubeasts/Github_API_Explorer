@@ -1,4 +1,5 @@
 require_relative 'github_api'
+require_relative 'github_developer'
 
 module  Github
   # Main class to set up a Github User
