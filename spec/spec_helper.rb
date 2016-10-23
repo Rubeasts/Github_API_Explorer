@@ -8,14 +8,14 @@ require 'vcr'
 require 'webmock'
 
 require_relative '../lib/github_developer'
-require_relative  '../lib/github_api'
+require_relative '../lib/github_api'
 require_relative '../lib/github_repository'
 
-FIXTURES_FOLDER = 'spec/fixtures'
-CASSETTES_FOLDER = "#{FIXTURES_FOLDER}/cassettes"
-CASSETTE_FILE = 'github_api'
+FIXTURES_FOLDER = 'spec/fixtures'.freeze
+CASSETTES_FOLDER = "#{FIXTURES_FOLDER}/cassettes".freeze
+CASSETTE_FILE = 'github_api'.freeze
 
-RESULTS = YAML.load(File.read('spec/fixtures/results.yml'))
+RESULTS = YAML.load(File.read('spec/fixtures/results.yml')).freeze
 USERNAME = 'rjollet'.freeze
 
 if File.file?('config/github_credential.yml')
