@@ -1,15 +1,24 @@
-require 'minitest/autorun'
-require 'minitest/rg'
-require 'yaml'
-require 'github_spec.rb'
+require_relative 'spec_helper'
 
 describe 'Github specifications' do
+  VCR.configure do |c|
+    c.cassette_library_dir = CASSETTES_FOLDER
+    c.hook_into :webmock
+
+    c.filter_sensitive_data('<AUTH>') { ENV['GH_AUTH'] }
+  end
+
   before do
+    VCR.insert_cassette CASSETTE_FILE, record: :new_episodes
     @github_api = Github::API.new(
-      CREDENTIALS[:username],
-      CREDENTIALS[:token]
+      ENV['GH_USERNAME'],
+      ENV['GH_TOKEN']
     )
-    @developer = Github::Developer.new(@github_api, USERNAME)
+    @developer = Github::Developer.find(@github_api, username: USERNAME)
+  end
+
+  after do
+    VCR.eject_cassette
   end
 
   it 'should be able to open a new Github Developer' do

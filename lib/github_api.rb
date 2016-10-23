@@ -25,6 +25,7 @@ module  Github
         sleep(2)
         response = github_api_get_http(url)
       end
+      response
     end
 
     def github_api_get(route)
@@ -55,7 +56,6 @@ module  Github
 
     def repo_stat(full_name, stat)
       route = '/repos/' + full_name + '/stats/' + stat
-      puts route
       github_api_get(route)
     end
   end
