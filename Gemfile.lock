@@ -25,6 +25,8 @@ GEM
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
     minitest (5.9.1)
+    minitest-rg (5.2.0)
+      minitest (~> 5.0)
     parser (2.3.1.4)
       ast (~> 2.2)
     path_expander (1.0.0)
@@ -54,6 +56,7 @@ DEPENDENCIES
   flog
   http
   minitest
+  minitest-rg
   rake
   rubocop
 

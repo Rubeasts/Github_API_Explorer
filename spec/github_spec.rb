@@ -1,7 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/rg'
-require 'yaml'
-require 'github_spec.rb'
+require_relative 'spec_helper'
 
 describe 'Github specifications' do
   before do
